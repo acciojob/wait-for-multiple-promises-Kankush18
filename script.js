@@ -1,10 +1,10 @@
 //your JS code here. If required.
-// Function to generate a random time between min and max seconds
+
 function randomTime(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-// Function to create a Promise that resolves after a random time
+
 function createRandomPromise() {
   return new Promise((resolve) => {
     const time = randomTime(1, 3);
@@ -14,23 +14,21 @@ function createRandomPromise() {
   });
 }
 
-// Array to store all the Promises
+
 const promises = [
   createRandomPromise(),
   createRandomPromise(),
   createRandomPromise()
 ];
 
-// Display loading text
+
 document.getElementById("output").innerHTML = '<tr><td colspan="2">Loading...</td></tr>';
 
-// Wait for all Promises to resolve
+
 Promise.all(promises)
   .then((results) => {
-    // Remove loading text
-    document.getElementById("output").innerHTML = '';
     
-    // Iterate over the results and update the table
+    document.getElementById("output").innerHTML = '';
     results.forEach((time, index) => {
       const row = document.createElement("tr");
       const promiseCell = document.createElement("td");
@@ -42,7 +40,7 @@ Promise.all(promises)
       document.getElementById("output").appendChild(row);
     });
     
-    // Calculate and display total time taken
+    
     const totalTime = results.reduce((total, time) => total + time, 0);
     const totalRow = document.createElement("tr");
     const totalPromiseCell = document.createElement("td");
